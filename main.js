@@ -1,7 +1,19 @@
-var Hello = React.createClass({  
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
+var Tweet=React.createClass({
+  render: function(){
+    return(
+      <div className="tweet_container">
+        <span className="tweet_title">{this.props.itemNum}</span>
+        <div className='tweet_message'>{this.props.message}</div>
+      </div>
+    );
   }
 });
 
-React.render(<Hello name='World' />, document.getElementById('container'));  
+var items=['hello', 'what\'s up', 'how\'s it going'];
+var n=items.size;
+
+React.render(<Tweet itemNum="0" message="hi"/>, document.getElementById('container'));
+
+for (var i=0; i<n; i++){
+  React.render(<Tweet itemNum={i.toString()} message={items[i]}/>, document.getElementById('container'));
+}
