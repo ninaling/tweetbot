@@ -10,9 +10,10 @@ var Tweet=React.createClass({
 });
 
 var items=['hello', 'what\'s up', 'how\'s it going'];
-var n=items.size;
+var n=items.length;
 
-React.render(<Tweet itemNum="0" message="hi"/>, document.getElementById('container'));
+//var temp=0;
+//React.render(<Tweet itemNum={temp.toString()} message="hi"/>, document.getElementById('container'));
 
 for (var i=0; i<n; i++){
   React.render(<Tweet itemNum={i.toString()} message={items[i]}/>, document.getElementById('container'));
