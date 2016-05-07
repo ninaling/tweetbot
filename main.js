@@ -1,16 +1,34 @@
 var http=require('http');
-var twitter=require('twitter');
 var express = require('express');  
 var React = require('react');  
-var ReactDOMServer = require('react-dom/server');
-var jsx = require('node-jsx');  
 
-var element = React.createElement('div', null, 'Hello World!');
-console.log(ReactDOMServer.renderToString(element));
+var Twitter = require('twitter');
+ 
+var client = new Twitter({
+  consumer_key: 'dpr0h0WQx5ZBPx9WnQAzcC7bh',
+  consumer_secret: '0ASTXL3xkj2fN0FklCOQR4BCfyVtxq974cqNJPXmSeWSVzx30j',
+  access_token_key: '726100001986740224-pvb41dzpkFm0icNmyBNYmeDZBxWiUnK',
+  access_token_secret: 'JI7kZOkUiuJyd0tHGFuvRUtYy8jAfP7ySnj8aVle7HTDL'
+});
+ 
+var params = {
+    screen_name: 'finkd',
+    count: 15
+};
+
+var tweetsArr=[];
+
+client.get('statuses/user_timeline', params, function(error, tweets, response){
+    if (error) console.log(error);
+    else{
+        tweets.forEach(function(tweet, i){
+            tweets.push(tweet.text);
+            console.log((i+1).toString()+": "+tweet.text);
+        });
+    }
+});
 
 var app=express();
-
-//var Tweets=require('./public/react.jsx');
 
 app.set('view engine', 'ejs');
 
@@ -20,38 +38,10 @@ app.listen(3000, function () {
   console.log('listening on port 3000');
 });
 
-jsx.install();
-//var Books = require('./views/index.jsx');
-
 app.get('/*', function(req, res) {
-
     res.render('pages/index', {
         
     });
 });
-//
-//require('babel/register')
-//
-//var express = require('express')
-//  , app = express()
-//  , React = require('react')
-//  , ReactDOM = require('react-dom/server')
-//  , components = require('./public/components.js')
-//
-//var HelloMessage = React.createFactory(components.HelloMessage)
-//
-//
-//app.engine('pug', require('pug').__express)
-//app.set('view engine', 'pug')
-//
-//app.use(express.static(__dirname + '/public'))
-//
-//app.get('/', function(req, res){
-//  res.render('index', {
-//    react: ReactDOM.renderToString(HelloMessage({name: "John"}))
-//  })
-//})
-//
-//app.listen(3000, function() {
-//  console.log('Listening on port 3000...')
-//})
+
+

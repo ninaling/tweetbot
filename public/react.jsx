@@ -1,5 +1,3 @@
-var React=require('react');
-
 var items=['hello', 'what\'s up', 'how\'s it going'];
 var n=items.length;
 
@@ -13,8 +11,8 @@ var Tweet=React.createClass({
         </div>
       );
     });
-    return(<ul>{tweetsList}</ul>);
+    return( <ul>{tweetsList}</ul> );
   }
 });
 
-React.render(<Tweet/>, document.getElementById('container'));
+ReactDOM.render(<Tweet/>, document.getElementById('container'));
