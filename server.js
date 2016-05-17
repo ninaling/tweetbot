@@ -33,14 +33,7 @@ app.get('/search', function(req, res) {
     console.log("username: "+req.query.user);
     client.get('statuses/user_timeline', {screen_name: req.query.user, count: 15}, function(error, tweets, response){
         if (error) console.log(error);
-        else{
-            console.log(tweets);
-            tweets.forEach(function(tweet, i){
-                console.log((i+1).toString()+": "+tweet.text);
-            });
-            res.json(tweets);
-        };
-
+        else res.json(tweets);
     });
 });
 
