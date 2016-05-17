@@ -1,62 +1,60 @@
-body {
-  background: #fff;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.7;
-  margin: 0;
-  padding: 30px;
+.tweetsBox {
+    width: 50vw;
+    margin-left: 25vw;
+    padding-bottom: 80px;
 }
 
-a {
-  color: #4183c4;
-  text-decoration: none;
+.header {
+    font-size: 30px;
+    margin-top: 25vh;
+    margin-bottom: 30px;
+    font-family: sans-serif;
 }
 
-a:hover {
-  text-decoration: underline;
+.user_form {
+    margin-bottom: 100px;
 }
 
-code {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
-  font-size: 12px;
-  margin: 0 2px;
-  padding: 0 5px;
+.form_input {
+    width: 100%; 
+    font-size: 20px;
+    display: block;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
 }
 
-h1, h2, h3, h4 {
-  font-weight: bold;
-  margin: 0 0 15px;
-  padding: 0;
+.form_input:focus {
+    outline: none;
+    background-color: aliceblue;
 }
 
-h1 {
-  border-bottom: 1px solid #ddd;
-  font-size: 2.5em;
-  font-weight: bold;
-  margin: 0 0 15px;
-  padding: 0;
+.form_submit {
+    display: block;
+    background: none;
+    border:none;
+    background-color: darkturquoise;
+    color: white;
+    font-size: 19px;
+    padding: 10px;
+    border-radius: 5px;
+}   
+
+.form_submit:hover {
+    cursor: pointer;
 }
 
-h2 {
-  border-bottom: 1px solid #eee;
-  font-size: 2em;
+.form_submit:focus {
+    outline: none;   
 }
 
-h3 {
-  font-size: 1.5em;
-}
-
-h4 {
-  font-size: 1.2em;
-}
-
-p, ul {
-  margin: 15px 0;
-}
-
-ul {
-  padding-left: 30px;
+.tweet {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: darkslategray;
 }

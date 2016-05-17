@@ -5,39 +5,27 @@ var UserForm = React.createClass({
   },
     onChange : function(e){
         this.setState({user : e.target.value});
-        console.log("USER: " + this.state.user);
     },
   handleUserChange: function(e) {
-      console.log("ASDf");
     e.preventDefault();
-    var user = this.state.user;
     if (!this.state.user) {
-        console.log("what the: " + e.target.value);
+        console.log("what the");
       return;
     }
-    this.props.onUserSubmit({user: e.target.value});
+    this.props.onUserSubmit({user: this.state.user});
     this.setState({user: ''});
   },
   render: function() {
     return (
-//        
-//        <form className="searchForm" onSubmit={this.handleUserChange}>
-//            <input 
-//              type="text"
-//              placeholder="@username"
-//              value={this.state.user}
-//              onChange={this.onChange}
-//            />
-//            <input type="submit" value="Search" />
-//      </form>
-      <form className="userForm" onSubmit={this.handleUserChange}>
+      <form className="user_form" onSubmit={this.handleUserChange}>
         <input
+          className="form_input"
           type="text"
           placeholder="@who would you like to stalk?"
           value={this.state.user}
           onChange={this.onChange}
         />
-        <input type="submit" value="Search" />
+        <input className="form_submit" type="submit" value="Search" />
       </form>
     );
   }
@@ -45,10 +33,9 @@ var UserForm = React.createClass({
 
 var TweetBox=React.createClass({
     getInitialState: function() {
-    return {data: []};
-  },
+        return {data: []};
+      },
     handleSearchSubmit: function(user) {
-        console.log('hai');
         $.ajax({
           url: this.props.url,
           dataType: 'json',
@@ -66,9 +53,9 @@ var TweetBox=React.createClass({
   render: function(){
     return( 
       <div className="tweetsBox">
-        <h1>Tweets</h1>
-        <TweetsList data={this.state.data} />
+        <div className="header">nina's twitterbot</div>
         <UserForm onUserSubmit={this.handleSearchSubmit}/>
+        <TweetsList data={this.state.data} />
       </div>
     );                   
   }
@@ -90,8 +77,6 @@ var TweetsList = React.createClass({
     );
   }
 });
-
-//          onChange={this.handleUserChange}
 
 ReactDOM.render(<TweetBox url="/search"/>, document.getElementById('content'));
 
