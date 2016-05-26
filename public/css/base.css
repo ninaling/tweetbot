@@ -60,13 +60,23 @@
 }
 
 .negative {
-    background-color: indianred; 
+    background-color: #f43a55; 
+    color: white;
+}
+
+.negative_lite {
+    background-color: #fc6e82; 
+    color: white;
 }
 
 .neutral {
-    background-color: aliceblue; 
+    background-color: #d4f5f5; 
+}
+
+.positive_lite {
+    background-color: #ddf79e; 
 }
 
 .positive {
-    background-color: limegreen; 
+    background-color: #98ed65; 
 }

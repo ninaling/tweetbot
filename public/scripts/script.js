@@ -53,7 +53,7 @@ var TweetBox=React.createClass({
   render: function(){
     return( 
       <div className="tweetsBox">
-        <div className="header">nina's twitterbot</div>
+        <div className="header">nina's tweetbot</div>
         <UserForm onUserSubmit={this.handleSearchSubmit}/>
         <TweetsList data={this.state.data} />
       </div>
@@ -64,9 +64,16 @@ var TweetBox=React.createClass({
 var TweetsList = React.createClass({
   render: function() {
     var tweetNodes = this.props.data.map(function(tweet) {
-        if (parseInt(tweet.score)<0) {
+        if (parseInt(tweet.score)<-2) {
           return (
             <div className="tweet negative">
+              {tweet.text}
+            </div>
+          );
+        }
+        else if (parseInt(tweet.score)<0) {
+          return (
+            <div className="tweet negative_lite">
               {tweet.text}
             </div>
           );
@@ -74,6 +81,13 @@ var TweetsList = React.createClass({
         else if (parseInt(tweet.score)==0) {
           return (
             <div className="tweet neutral">
+              {tweet.text}
+            </div>
+          );
+        }
+        else if (parseInt(tweet.score)<3) {
+          return (
+            <div className="tweet positive_lite">
               {tweet.text}
             </div>
           );
