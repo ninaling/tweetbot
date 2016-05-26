@@ -4,6 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var Twitter=require('twitter');
 var app = express();
+var sentiment = require('sentiment');
 
 var client = new Twitter({
   consumer_key: 'dpr0h0WQx5ZBPx9WnQAzcC7bh',
@@ -31,19 +32,17 @@ app.use(function(req, res, next) {
 
 app.get('/search', function(req, res) {
     console.log("username: "+req.query.user);
-    client.get('statuses/user_timeline', {screen_name: req.query.user, count: 15}, function(error, tweets, response){
+    client.get('statuses/user_timeline', {screen_name: req.query.user, count: 30}, function(error, tweets, response){
         if (error) console.log(error);
-        else res.json(tweets);
+        else res.json(tweets.map(function(tweet){
+            tweet.score=sentiment(tweet.text).score;
+            return tweet;
+        }));
     });
 });
 
-//
-//app.listen(3000, function() {
-//  console.log('listening on port 3000');
-//});
-
 app.listen(process.env.PORT || 3000, function(){
-  console.log('listening on port');
+  console.log('app starting');
 });
 
 

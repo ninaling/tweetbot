@@ -64,11 +64,27 @@ var TweetBox=React.createClass({
 var TweetsList = React.createClass({
   render: function() {
     var tweetNodes = this.props.data.map(function(tweet) {
-      return (
-        <div className="tweet">
-          {tweet.text}
-        </div>
-      );
+        if (parseInt(tweet.score)<0) {
+          return (
+            <div className="tweet negative">
+              {tweet.text}
+            </div>
+          );
+        }
+        else if (parseInt(tweet.score)==0) {
+          return (
+            <div className="tweet neutral">
+              {tweet.text}
+            </div>
+          );
+        }
+        else {
+          return (
+            <div className="tweet positive">
+              {tweet.text}
+            </div>
+          );
+        }
     });
     return (
       <div className="tweetsList">

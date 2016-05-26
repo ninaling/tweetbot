@@ -53,8 +53,20 @@
     margin-top: 20px;
     padding: 14px;
     border-radius: 10px;
-    background-color: aliceblue;
+/*    background-color: aliceblue;*/
     font-family: sans-serif;
     font-size: 14px;
     color: darkslategray;
+}
+
+.negative {
+    background-color: indianred; 
+}
+
+.neutral {
+    background-color: aliceblue; 
+}
+
+.positive {
+    background-color: limegreen; 
 }
