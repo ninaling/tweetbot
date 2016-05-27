@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
 
 app.get('/search', function(req, res) {
     console.log("username: "+req.query.user);
-    client.get('statuses/user_timeline', {screen_name: req.query.user, count: 30}, function(error, tweets, response){
+    client.get('statuses/user_timeline', {screen_name: req.query.user, count: 50}, function(error, tweets, response){
         if (error) console.log(error);
         else res.json(tweets.map(function(tweet){
             tweet.score=sentiment(tweet.text).score;
